@@ -1,3 +1,52 @@
 <template>
-    
+    <div class="excProspectContainer">
+
+        <!-- Step One -->
+        <template if:true={stepOne}>
+            <div class="excProspectCopy">
+                <h1 class="excProspectHeader fade-in-first">Hi there!</h1>
+                <p class="excProspectBodyText fade-in-second">We're super excited to provide you service you can bank on.</p>
+            </div>
+            <div class="excProspectCTAContainer fade-in-third">
+                <div class="excProspectCTA" onclick={progressStep}>
+                    Let's get started →
+                </div>
+            </div>
+        </template>
+
+        <!-- Step Two -->
+        <template if:true={stepTwo}>
+            <div class="excProspectCopy">
+                <h1 class="excProspectHeader fade-in-first">First things first</h1>
+                <p class="excProspectBodyText fade-in-second">What's your first name?</p>
+            </div>
+            <div class="excProspectCTAContainer fade-in-third">
+                <div class="excProspectDataInput">
+                    <input class="excProspectTextField" onchange={grabName} onkeypress={progressStepEnterKey} type="text" placeholder="My name is...">
+                    <div class="excProspectFormButton" onclick={progressStep}>→</div>
+                </div>
+
+            </div>
+        </template>
+
+         <!-- Step Three -->
+         <template if:true={stepThree}>
+            <div class="excProspectCopy">
+                <h1 class="excProspectHeader fade-in-first">Great to meet you, {name}.</h1>
+                <p class="excProspectBodyText fade-in-second">What brings you here today?</p>
+            </div>
+            <div class="excProspectTiles fade-in-third">
+                <div class="excProspectTile">
+                    Start A New Business
+                </div>
+                <div class="excProspectTile">
+                    Open A New Office
+                </div>
+                <div class="excProspectTile">
+                    Rebalance My Books
+                </div>
+            </div>
+        </template>
+
+    </div>
 </template>

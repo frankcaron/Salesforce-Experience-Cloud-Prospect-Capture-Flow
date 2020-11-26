@@ -1,0 +1,135 @@
+/* ================================ */
+/*          Block Elements          */
+/* ================================ */
+
+.excProspectContainer {
+  width: 100%;
+  min-width: 100%;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.excProspectHeader {
+  font-size: 20pt;
+  line-height: 1;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.excProspectBodyText {
+  font-size: 12pt;
+  text-align: center;
+}
+
+.excProspectCopy {
+  padding: 20px;
+}
+
+.excProspectCTAContainer {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  opacity: 0;
+  padding-bottom: 20px;
+}
+
+.excProspectCTA {
+  border: 1px solid #ff0000;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12pt;
+}
+
+.excProspectCTA:hover {
+  background-color: #ff0000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.excProspectDataInput {
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12pt;
+  display: flex;
+}
+
+.excProspectTextField {
+  padding: 10px;
+  border: 0px;
+  border-bottom: 1px solid #666;
+  width: 90%;
+  line-height: 1;
+}
+
+.excProspectFormButton {
+  font-size: 12pt;
+  width: 10%;
+  line-height: 2;
+  padding: 5px;
+}
+
+.excProspectFormButton:hover {
+  color: #ff0000;
+  cursor: pointer;
+}
+
+.excProspectTiles {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.excProspectTile {
+  padding: 60px;
+  margin: 20px;
+  text-align: center;
+  border: 1px solid #ff0000;
+}
+
+.excProspectTile:hover {
+  padding: 60px;
+  margin: 20px;
+  text-align: center;
+  background-color: #ff0000;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ================================ */
+/*            Animations            */
+/* ================================ */
+
+.fade-in-first {
+  animation-name: fadeIn;
+  animation-duration: 3s;
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.fade-in-second {
+  animation-name: fadeIn;
+  animation-duration: 3s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.fade-in-third {
+  animation-name: fadeIn;
+  animation-duration: 3s;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
