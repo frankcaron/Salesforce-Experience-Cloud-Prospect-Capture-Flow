@@ -3,7 +3,7 @@
 ![Status](https://img.shields.io/badge/status-Beta-yellowgreen)
 ![Geography](https://img.shields.io/badge/Geography-US-blue)
 
-This Salesforce DX (SFDX) repository contains a Lightning Web Component designed specifically to be used for the new Experience Cloud for Marketing template. This flow is a slick way to capture interest and seamlessly register a prospect to being working with them in Experience Cloud for Customers.
+This Salesforce DX (SFDX) repository contains a Lightning Web Component designed specifically to be used with the new Experience Cloud for Marketing template. This customizable flow is a slick way to capture interest and seamlessly register a prospect with a transition to Experience Cloud for Customers.
 
 # Preview
 

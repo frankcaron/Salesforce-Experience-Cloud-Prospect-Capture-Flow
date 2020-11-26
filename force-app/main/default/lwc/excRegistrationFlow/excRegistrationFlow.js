@@ -1,4 +1,5 @@
 import { LightningElement, api } from 'lwc';
+import communityId from '@salesforce/community/Id';
 import getRegisteredUserURL from '@salesforce/apex/excProspectRegistrationController.getRegisteredUserURL';
 
 export default class ExcRegistrationFlow extends LightningElement {
@@ -25,9 +26,9 @@ export default class ExcRegistrationFlow extends LightningElement {
     //Registration Function
     registerUser(payload) {
         console.log("Registering user...");
-        /*
 
-        getRegisteredUserURL(payload)
+        /*
+        getRegisteredUserURL({communityName: '$communityId'})
             .then(data => {
                 if (data) {
                     window.location.href = data;
