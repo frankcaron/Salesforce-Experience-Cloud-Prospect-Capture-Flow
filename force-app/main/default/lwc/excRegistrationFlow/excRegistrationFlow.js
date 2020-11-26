@@ -16,6 +16,7 @@ export default class ExcRegistrationFlow extends LightningElement {
     stepTwo = false;
     stepThree = false;
     stepFour = false;
+    stepFive = false;
 
     //Form Inputs
     name;
@@ -39,6 +40,11 @@ export default class ExcRegistrationFlow extends LightningElement {
             //Progress the step
             this.stepThree = false;
             this.stepFour = true;
+        } else if (this.stepFour) {
+
+            //Progress the step
+            this.stepFour = false;
+            this.stepFive = true;
         }
     }
 

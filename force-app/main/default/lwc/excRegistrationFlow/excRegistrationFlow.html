@@ -25,7 +25,6 @@
                     <input class="excProspectTextField" onchange={grabName} onkeypress={progressStepEnterKey} type="text" placeholder="My name is...">
                     <div class="excProspectFormButton" onclick={progressStep}>→</div>
                 </div>
-
             </div>
         </template>
 
@@ -52,6 +51,21 @@
                 <div class="excProspectTile" onclick={progressStep}>{setSecondChoiceA}</div>
                 <div class="excProspectTile excEinstein" onclick={progressStep}>{setSecondChoiceB}</div>
                 <div class="excProspectTile" onclick={progressStep}>{setSecondChoiceC}</div>
+            </div>
+        </template>
+
+        <!-- Step Five -->
+        <template if:true={stepFive}>
+            <div class="excProspectCopy">
+                <h1 class="excProspectHeader fade-in-first">Understood.</h1>
+                <p class="excProspectBodyText fade-in-second"> We've got you covered, {name}. Just a few more pieces of info...</p>
+            </div>
+            <div class="excProspectCTAContainer fade-in-third">
+                <div class="excProspectDataInput">
+                    <input class="excProspectTextField" type="text" placeholder="My email is..."> <br />
+                    <input class="excProspectTextField" type="text" placeholder="And a simple passphrase..."> <br />
+                    <div class="excProspectFormButton" onclick={progressStep}>→</div>
+                </div>
             </div>
         </template>
 
