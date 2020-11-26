@@ -1,4 +1,4 @@
-# Experience Cloud Prospect Flow
+# Salesforce Experience Cloud for Marketing - Prospect Capture Flow
 
 ![Status](https://img.shields.io/badge/status-Beta-yellowgreen)
 ![Geography](https://img.shields.io/badge/Geography-US-blue)
