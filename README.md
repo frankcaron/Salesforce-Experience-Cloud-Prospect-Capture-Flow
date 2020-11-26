@@ -5,6 +5,10 @@
 
 This Salesforce DX (SFDX) repository contains a Lightning Web Component designed specifically to be used for the new Experience Cloud for Marketing template. This flow is a slick way to capture interest and seamlessly register a prospect to being working with them in Experience Cloud for Customers.
 
+# Preview
+
+![Preview of the reg flow](preview.png)
+
 # Prereqs
 
 In order to use this app, you'll need to ensure that you have...
