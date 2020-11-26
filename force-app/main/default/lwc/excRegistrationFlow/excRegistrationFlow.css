@@ -53,6 +53,7 @@
   margin-right: auto;
   font-size: 12pt;
   display: flex;
+  min-width: 30%;
 }
 
 .excProspectTextField {
@@ -79,6 +80,9 @@
   display: flex;
   flex-flow: row wrap;
   width: 100%;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
 }
 
 .excProspectTile {
@@ -86,6 +90,8 @@
   margin: 20px;
   text-align: center;
   border: 1px solid #ff0000;
+  font-size: 12pt;
+  font-weight: bold;
 }
 
 .excProspectTile:hover {
@@ -95,6 +101,13 @@
   background-color: #ff0000;
   color: #fff;
   cursor: pointer;
+}
+
+.excEinstein {
+  background-image: url("https://fc-sfdc-public-assets.s3.us-east-2.amazonaws.com/einstein.png");
+  background-repeat: no-repeat;
+  background-position: 5% 102%;
+  background-size: 40px;
 }
 
 /* ================================ */

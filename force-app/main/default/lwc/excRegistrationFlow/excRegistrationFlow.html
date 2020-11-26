@@ -36,15 +36,22 @@
                 <p class="excProspectBodyText fade-in-second">What brings you here today?</p>
             </div>
             <div class="excProspectTiles fade-in-third">
-                <div class="excProspectTile">
-                    Start A New Business
-                </div>
-                <div class="excProspectTile">
-                    Open A New Office
-                </div>
-                <div class="excProspectTile">
-                    Rebalance My Books
-                </div>
+                <div class="excProspectTile" onclick={progressStep}>{setFirstChoiceA}</div>
+                <div class="excProspectTile" onclick={progressStep}>{setFirstChoiceB}</div>
+                <div class="excProspectTile" onclick={progressStep}>{setFirstChoiceC}</div>
+            </div>
+        </template>
+
+        <!-- Step Four -->
+        <template if:true={stepFour}>
+            <div class="excProspectCopy">
+                <h1 class="excProspectHeader fade-in-first">Got it.</h1>
+                <p class="excProspectBodyText fade-in-second">To be successful with that, what do you need?</p>
+            </div>
+            <div class="excProspectTiles fade-in-third">
+                <div class="excProspectTile" onclick={progressStep}>{setSecondChoiceA}</div>
+                <div class="excProspectTile excEinstein" onclick={progressStep}>{setSecondChoiceB}</div>
+                <div class="excProspectTile" onclick={progressStep}>{setSecondChoiceC}</div>
             </div>
         </template>
 

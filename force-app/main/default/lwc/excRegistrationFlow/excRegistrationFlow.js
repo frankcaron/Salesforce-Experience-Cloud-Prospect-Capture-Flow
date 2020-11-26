@@ -4,11 +4,18 @@ export default class ExcRegistrationFlow extends LightningElement {
 
     //Properties
     @api nbaStrategy;
+    @api setFirstChoiceA;
+    @api setFirstChoiceB;
+    @api setFirstChoiceC;
+    @api setSecondChoiceA;
+    @api setSecondChoiceB;
+    @api setSecondChoiceC;
 
     //Step Flags
     stepOne = true;
     stepTwo = false;
     stepThree = false;
+    stepFour = false;
 
     //Form Inputs
     name;
@@ -26,6 +33,12 @@ export default class ExcRegistrationFlow extends LightningElement {
             //Progress the step
             this.stepTwo = false;
             this.stepThree = true;
+
+        } else if (this.stepThree) {
+
+            //Progress the step
+            this.stepThree = false;
+            this.stepFour = true;
         }
     }
 

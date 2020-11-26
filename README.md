@@ -20,6 +20,10 @@ NOTE: These components are for Experience Cloud (Communities) only.
 
 Use SFDX, once connected to your Dev org's Dev Hub to deploy the source. The packaged LWCs are built entirely with vanilla JS, HTML, and CSS powered by the static resources included in the repo. The paired Apex classes will be deployed alongside these LWC.
 
+You'll also need to do the following:
+
+1. Make sure your CSP Trusted Settings allow for `https://fc-sfdc-public-assets.s3.us-east-2.amazonaws.com/`.
+
 # Etc.
 
 Created with love by Frank Caron.

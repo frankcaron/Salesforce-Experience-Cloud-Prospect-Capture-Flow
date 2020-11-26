@@ -11,7 +11,13 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightningCommunity__Default">
-            <property name="nbaStrategy" label="NBA Strategy Id" type="String" description="The unique identifier for the Next Best Action strategy used in the flow." required="true" default="" />
+            <property name="nbaStrategy" label="NBA Strategy Id" type="String" description="The unique identifier for the Next Best Action strategy used in the flow." required="true" default="ID" />
+            <property name="setFirstChoiceA" label="First Question: Choice A" type="String" description="The value for the first option in the first choice set" required="true" default="Start A New Business" />
+            <property name="setFirstChoiceB" label="First Question: Choice B" type="String" description="The value for the second option in the first choice set" required="true" default="Open A New Office" />
+            <property name="setFirstChoiceC" label="First Question: Choice C" type="String" description="The value for the third option in the first choice set" required="true" default="Rebalance My Books" />
+            <property name="setSecondChoiceA" label="Second Question: Choice A" type="String" description="The value for the first option in the second choice set" required="true" default="Advisory Services" />
+            <property name="setSecondChoiceB" label="Second Question: Choice B" type="String" description="The value for the second option in the second choice set. This one will be highlighted by Einstein." required="true" default="Working Capital" />
+            <property name="setSecondChoiceC" label="Second Question: Choice C" type="String" description="The value for the third option in the second choice set" required="true" default="Payroll Assistance" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
