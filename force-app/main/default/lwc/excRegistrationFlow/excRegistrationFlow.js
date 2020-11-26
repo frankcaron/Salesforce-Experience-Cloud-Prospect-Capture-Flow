@@ -26,15 +26,17 @@ export default class ExcRegistrationFlow extends LightningElement {
     registerUser(payload) {
         console.log("Registering user...");
         /*
-            wire
+
+        getRegisteredUserURL(payload)
             .then(data => {
-            if (data) {
-                window.location.href = data;
-            }
+                if (data) {
+                    window.location.href = data;
+                }
             }).catch(error => {
                 console.error(error);
             });
         */
+
     }
 
     //Helper Functions
