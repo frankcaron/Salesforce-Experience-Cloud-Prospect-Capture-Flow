@@ -22,7 +22,7 @@
             </div>
             <div class="excProspectCTAContainer fade-in-third">
                 <div class="excProspectDataInput">
-                    <input class="excProspectTextField" onchange={grabName} onkeypress={progressStepEnterKey} type="text" placeholder="My name is...">
+                    <input class="excProspectTextField" name="name" onchange={grabName} onkeypress={progressStepEnterKey} type="text" placeholder="My name is...">
                     <div class="excProspectFormButton" onclick={progressStep}>→</div>
                 </div>
             </div>
@@ -62,9 +62,12 @@
             </div>
             <div class="excProspectCTAContainer fade-in-third">
                 <div class="excProspectDataInput">
-                    <input class="excProspectTextField" type="text" placeholder="My email is..."> <br />
-                    <input class="excProspectTextField" type="text" placeholder="And a simple passphrase..."> <br />
-                    <div class="excProspectFormButton" onclick={progressStep}>→</div>
+                    <input class="excProspectTextFieldStandalone" name="email" type="text" placeholder="My email is..."> <br />
+                    <input class="excProspectTextFieldStandalone" name="password" type="password" placeholder="And a simple passphrase..."> <br />
+                    <input class="excProspectTextFieldStandalone" name="verifypassword" type="password" placeholder="And the passphrase again to confirm..."> <br />
+                    <div class="excProspectCTA excMargin" onclick={registerUser}>
+                        Get started →
+                    </div>
                 </div>
             </div>
         </template>

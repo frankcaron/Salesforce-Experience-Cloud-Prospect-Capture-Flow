@@ -53,6 +53,7 @@
   margin-right: auto;
   font-size: 12pt;
   display: flex;
+  flex-flow: row wrap;
   min-width: 30%;
 }
 
@@ -62,6 +63,19 @@
   border-bottom: 1px solid #666;
   width: 90%;
   line-height: 1;
+}
+
+.excProspectTextFieldStandalone {
+  padding: 10px;
+  border: 0px;
+  border-bottom: 1px solid #666;
+  width: 100%;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.excMargin {
+  margin-top: 20px;
 }
 
 .excProspectFormButton {

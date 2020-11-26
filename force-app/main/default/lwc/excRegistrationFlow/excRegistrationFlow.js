@@ -1,4 +1,5 @@
 import { LightningElement, api } from 'lwc';
+import getRegisteredUserURL from '@salesforce/apex/excProspectRegistrationController.getRegisteredUserURL';
 
 export default class ExcRegistrationFlow extends LightningElement {
 
@@ -20,6 +21,21 @@ export default class ExcRegistrationFlow extends LightningElement {
 
     //Form Inputs
     name;
+
+    //Registration Function
+    registerUser(payload) {
+        console.log("Registering user...");
+        /*
+            wire
+            .then(data => {
+            if (data) {
+                window.location.href = data;
+            }
+            }).catch(error => {
+                console.error(error);
+            });
+        */
+    }
 
     //Helper Functions
     progressStep() {
