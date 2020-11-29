@@ -130,7 +130,7 @@
 
 .fade-in-first {
   animation-name: fadeIn;
-  animation-duration: 3s;
+  animation-duration: 2s;
   animation-delay: 0s;
   animation-fill-mode: forwards;
   opacity: 0;
@@ -138,16 +138,16 @@
 
 .fade-in-second {
   animation-name: fadeIn;
-  animation-duration: 3s;
-  animation-delay: 1s;
+  animation-duration: 2s;
+  animation-delay: 0.5s;
   animation-fill-mode: forwards;
   opacity: 0;
 }
 
 .fade-in-third {
   animation-name: fadeIn;
-  animation-duration: 3s;
-  animation-delay: 3s;
+  animation-duration: 2s;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
   opacity: 0;
 }
