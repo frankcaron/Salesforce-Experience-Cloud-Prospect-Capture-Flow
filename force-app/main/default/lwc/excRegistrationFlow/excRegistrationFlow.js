@@ -19,6 +19,7 @@ export default class ExcRegistrationFlow extends LightningElement {
     stepThree = false;
     stepFour = false;
     stepFive = false;
+    stepSix = false;
 
     //Form Inputs
     name;
@@ -26,6 +27,9 @@ export default class ExcRegistrationFlow extends LightningElement {
     //Registration Function
     registerUser(payload) {
         console.log("Registering user...");
+
+        this.stepFive = false;
+        this.stepSix = true;
 
         /*
         getRegisteredUserURL({communityName: '$communityId'})
