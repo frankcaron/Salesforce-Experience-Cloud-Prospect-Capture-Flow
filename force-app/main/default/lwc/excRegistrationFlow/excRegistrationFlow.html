@@ -18,12 +18,15 @@
         <template if:true={stepTwo}>
             <div class="excProspectCopy">
                 <h1 class="excProspectHeader fade-in-first">First things first</h1>
-                <p class="excProspectBodyText fade-in-second">What's your first name?</p>
+                <p class="excProspectBodyText fade-in-second">What's your name?</p>
             </div>
             <div class="excProspectCTAContainer fade-in-third">
                 <div class="excProspectDataInput">
-                    <input class="excProspectTextField" name="name" onchange={grabName} onkeypress={progressStepEnterKey} type="text" placeholder="My name is...">
-                    <div class="excProspectFormButton" onclick={progressStep}>→</div>
+                    <input class="excProspectTextFieldStandalone" name="firstName" onchange={grabFirstName} type="text" placeholder="My first name is...">
+                    <input class="excProspectTextFieldStandalone" name="lastName" onchange={grabLastName} onkeypress={progressStepEnterKey} type="text" placeholder="My last name is...">
+                    <div class="excProspectCTA excMargin" onclick={progressStep}>
+                        Continue →
+                    </div>
                 </div>
             </div>
         </template>
@@ -31,7 +34,7 @@
          <!-- Step Three -->
          <template if:true={stepThree}>
             <div class="excProspectCopy">
-                <h1 class="excProspectHeader fade-in-first">Great to meet you, {name}.</h1>
+                <h1 class="excProspectHeader fade-in-first">Great to meet you, {firstName}.</h1>
                 <p class="excProspectBodyText fade-in-second">What brings you here today?</p>
             </div>
             <div class="excProspectTiles fade-in-third">
@@ -45,7 +48,7 @@
         <template if:true={stepFour}>
             <div class="excProspectCopy">
                 <h1 class="excProspectHeader fade-in-first">Got it.</h1>
-                <p class="excProspectBodyText fade-in-second">To be successful with that, what do you need?</p>
+                <p class="excProspectBodyText fade-in-second">To be successful, {firstName}, what additional help you need?</p>
             </div>
             <div class="excProspectTiles fade-in-third">
                 <div class="excProspectTile" onclick={progressStep}>{setSecondChoiceA}</div>
@@ -58,13 +61,13 @@
         <template if:true={stepFive}>
             <div class="excProspectCopy">
                 <h1 class="excProspectHeader fade-in-first">Understood.</h1>
-                <p class="excProspectBodyText fade-in-second"> We've got you covered, {name}. Just a few more pieces of info...</p>
+                <p class="excProspectBodyText fade-in-second"> We've got you covered, {firstName}. Just a few more pieces of info...</p>
             </div>
             <div class="excProspectCTAContainer fade-in-third">
                 <div class="excProspectDataInput">
-                    <input class="excProspectTextFieldStandalone" name="email" type="text" placeholder="My email is..."> <br />
-                    <input class="excProspectTextFieldStandalone" name="password" type="password" placeholder="And a simple passphrase..."> <br />
-                    <input class="excProspectTextFieldStandalone" name="verifypassword" type="password" placeholder="And the passphrase again to confirm..."> <br />
+                    <input class="excProspectTextFieldStandalone" name="email" onchange={grabEmail} type="text" placeholder="My email is..."> <br />
+                    <input class="excProspectTextFieldStandalone" name="password" onchange={grabPassword} type="password" placeholder="And a simple passphrase..."> <br />
+                    <input class="excProspectTextFieldStandalone" name="verifypassword" onchange={grabVerifyPassword} type="password" placeholder="And the passphrase again to confirm..."> <br />
                     <div class="excProspectCTA excMargin" onclick={registerUser}>
                         Get started →
                     </div>

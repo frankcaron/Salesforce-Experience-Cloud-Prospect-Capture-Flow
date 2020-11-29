@@ -22,7 +22,11 @@ export default class ExcRegistrationFlow extends LightningElement {
     stepSix = false;
 
     //Form Inputs
-    name;
+    firstName;
+    lastName
+    email;
+    password;
+    verifyPassword;
 
     //Registration Function
     registerUser(payload) {
@@ -31,16 +35,33 @@ export default class ExcRegistrationFlow extends LightningElement {
         this.stepFive = false;
         this.stepSix = true;
 
-        /*
-        getRegisteredUserURL({communityName: '$communityId'})
+        getRegisteredUserURL({
+                communityName: communityId,
+                firstName: this.firstName,
+                lastName: this.lastName,
+                email: this.email,
+                password: this.password,
+                verifyPassword: this.verifyPassword
+            })
             .then(data => {
                 if (data) {
-                    window.location.href = data;
+                    if (data == 'USERFAIL') {
+                        console.log("User was not successfully created.");
+                        //Pass error message back and move back to step 4
+                    } else if (data == 'PASSFAIL') {
+                        console.log("Passwords don't match.");
+                        //Pass error message back and move back to step 4
+                    } else {
+                        console.log("Successfully logged user in...");
+                        //window.location.href = data;
+                    }
+                } else {
+                    console.log("Unexpected error response from login logic.");
                 }
             }).catch(error => {
+                console.log("Failed to execute login logic.");
                 console.error(error);
             });
-        */
 
     }
 
@@ -77,8 +98,24 @@ export default class ExcRegistrationFlow extends LightningElement {
         }
     }
 
-    grabName(event) {
-        this.name = event.target.value;
+    grabFirstName(event) {
+        this.firstName = event.target.value;
+    }
+
+    grabLastName(event) {
+        this.lastName = event.target.value;
+    }
+
+    grabPassword(event) {
+        this.password = event.target.value;
+    }
+
+    grabVerifyPassword(event) {
+        this.verifyPassword = event.target.value;
+    }
+
+    grabEmail(event) {
+        this.email = event.target.value;
     }
 
 }

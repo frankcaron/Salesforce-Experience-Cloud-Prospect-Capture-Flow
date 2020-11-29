@@ -6,56 +6,82 @@ public with sharing class excProspectRegistrationController {
     public excProspectRegistrationController() {}
 
     @AuraEnabled
-    public static String getRegisteredUserURL() {
+    public static String getRegisteredUserURL(
+        String communityName,
+        String firstName,
+        String lastName,
+        String email,
+        String password,
+        String verifyPassword){
 
         //Variables
         String accountId;
         String userName;
-        String firstName;
-        String lastName;
-        String email;
-        String password;
-        String confirmPassword;
+        String userfirstName;
+        String userlastName;
+        String userEmail;
+        String userPassword;
+        String userConfirmPassword;
         String communityNickname;
-        String profileId;
-        String roleEnum;
+        String userId;
 
-        // it's okay if password is null - we'll send the user a random password in that case
-        if (password != confirmPassword) {
-            ApexPages.Message msg = new ApexPages.Message(ApexPages.Severity.ERROR, Label.site.passwords_dont_match);
-            ApexPages.addMessage(msg);
-            return null;
-        }
+        //Constants
+        final String USERFAIL = 'USERFAIL';
+        final String PASSFAIL = 'PASSFAIL';
 
         //Fetch variables from JS
+        communityNickname = communityName;
+        userfirstName = firstName;
+        userlastName = lastName;
+        userEmail = email;
+        userName = email;
+        userPassword = password;
+        userConfirmPassword = verifyPassword;
+
+        //Logs
+        System.debug('excProspectRegistration || Beginning registration and log in logic.');
+        System.debug('excProspectRegistration || Community Name: ' + communityName);
+        System.debug('excProspectRegistration || First Name: ' + userfirstName);
+        System.debug('excProspectRegistration || Last Name: ' + userlastName);
+        System.debug('excProspectRegistration || Email: ' + userEmail);
+
+        // it's okay if password is null - we'll send the user a random password in that case
+        if (userPassword != userConfirmPassword) {
+            System.debug('excProspectRegistration || Passwords do not match.');
+            return PASSFAIL;
+        }
 
         //Necessary variables to prefill
         User u = new User();
         u.Username = userName;
-        u.Email = email;
-        u.FirstName = firstName;
-        u.LastName = lastName;
+        u.Email = userEmail;
+        u.FirstName = userfirstName;
+        u.LastName = userlastName;
         u.CommunityNickname = communityNickname;
-        u.ProfileId = profileId;
 
         //Create user
-        String userId = Site.createPortalUser(u, accountId, password);
+        System.debug('excProspectRegistration || Creating portal user');
+        //userId = Site.createPortalUser(u, accountId, password);
 
         //Provide URL back for redirect
         if (userId != null) {
-            System.Debug('User has been created (userId=)' + userId);
+            System.Debug('excProspectRegistration || User has been created (userId=)' + userId);
             if (password != null && password.length() > 1) {
-                ApexPages.PageReference pageToReturn = Site.login(userName, password, null);
-                return pageToReturn.getURL();
+
+                System.debug('excProspectRegistration || Logging user in...');
+                //ApexPages.PageReference pageToReturn = Site.login(userName, password, null);
+                //return pageToReturn.getURL();
+
+                return '';
             }
             else {
-                PageReference page = System.Page.CommunitiesSelfRegConfirm;
-                page.setRedirect(true);
-                return page.getURL();
+                System.debug('excProspectRegistration || Password is invalid.');
+                return null;
             }
+        } else {
+            System.debug('excProspectRegistration || User has not been created successfully.');
+            return USERFAIL;
         }
-        return null;
-
     }
 }
 
