@@ -23,7 +23,7 @@
             <div class="excProspectCTAContainer fade-in-third">
                 <div class="excProspectDataInput">
                     <input class="excProspectTextFieldStandalone" name="firstName" onchange={grabFirstName} type="text" placeholder="My first name is...">
-                    <input class="excProspectTextFieldStandalone" name="lastName" onchange={grabLastName} onkeypress={progressStepEnterKey} type="text" placeholder="My last name is...">
+                    <input class="excProspectTextFieldStandalone" name="lastName" onchange={grabLastName} onkeypress={progressStepEnterKey} type="text" placeholder="And my last name is...">
                     <div class="excProspectCTA excMargin" onclick={progressStep}>
                         Continue →
                     </div>
@@ -60,8 +60,14 @@
         <!-- Step Five -->
         <template if:true={stepFive}>
             <div class="excProspectCopy">
-                <h1 class="excProspectHeader fade-in-first">Understood.</h1>
-                <p class="excProspectBodyText fade-in-second"> We've got you covered, {firstName}. Just a few more pieces of info...</p>
+                <template if:true={error}>
+                    <h1 class="excProspectHeader fade-in-first excError">Oops!</h1>
+                    <p class="excProspectBodyText fade-in-second excError">Looks like {error}. Please try again for us, {firstName}.</p>
+                </template>
+                <template if:false={error}>
+                    <h1 class="excProspectHeader fade-in-first">Understood.</h1>
+                    <p class="excProspectBodyText fade-in-second"> We've got you covered, {firstName}. Just a few more pieces of info...</p>
+                </template>
             </div>
             <div class="excProspectCTAContainer fade-in-third">
                 <div class="excProspectDataInput">

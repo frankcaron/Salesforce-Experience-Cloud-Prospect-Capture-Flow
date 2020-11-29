@@ -11,6 +11,8 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightningCommunity__Default">
+            <property name="loginMode" label="Log In Mode" type="Boolean" description="Toggle to perform a login instead of a registration. Useful if you want to demo the flow but not register an entirely new user in the process." required="true" default="true" />
+            <property name="accountId" label="Account Id" type="String" description="The unique ID for the Account record to associate the new user with." required="true" default="" />
             <property name="nbaStrategy" label="NBA Strategy Id" type="String" description="The unique identifier for the Next Best Action strategy used in the flow." required="true" default="ID" />
             <property name="setFirstChoiceA" label="First Question: Choice A" type="String" description="The value for the first option in the first choice set" required="true" default="Start A New Business" />
             <property name="setFirstChoiceB" label="First Question: Choice B" type="String" description="The value for the second option in the first choice set" required="true" default="Open A New Office" />

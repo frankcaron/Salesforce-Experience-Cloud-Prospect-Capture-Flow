@@ -5,7 +5,9 @@ import getRegisteredUserURL from '@salesforce/apex/excProspectRegistrationContro
 export default class ExcRegistrationFlow extends LightningElement {
 
     //Properties
+    @api loginMode;
     @api nbaStrategy;
+    @api accountId;
     @api setFirstChoiceA;
     @api setFirstChoiceB;
     @api setFirstChoiceC;
@@ -27,13 +29,13 @@ export default class ExcRegistrationFlow extends LightningElement {
     email;
     password;
     verifyPassword;
+    error;
 
     //Registration Function
     registerUser(payload) {
         console.log("Registering user...");
 
-        this.stepFive = false;
-        this.stepSix = true;
+        this.error = null;
 
         getRegisteredUserURL({
                 communityName: communityId,
@@ -41,19 +43,54 @@ export default class ExcRegistrationFlow extends LightningElement {
                 lastName: this.lastName,
                 email: this.email,
                 password: this.password,
-                verifyPassword: this.verifyPassword
+                verifyPassword: this.verifyPassword,
+                accountRecord: this.accountId,
+                loginMode: this.loginMode
             })
             .then(data => {
                 if (data) {
                     if (data == 'USERFAIL') {
+
                         console.log("User was not successfully created.");
-                        //Pass error message back and move back to step 4
+
+                        //Reset step
+                        this.stepFive = true;
+                        this.stepSix = false;
+
+                        //Pass error message back and move back to step 5
+                        this.error = 'your account could not be created';
+
                     } else if (data == 'PASSFAIL') {
+
                         console.log("Passwords don't match.");
-                        //Pass error message back and move back to step 4
+
+                        //Reset step
+                        this.stepFive = true;
+                        this.stepSix = false;
+
+                        //Pass error message back and move back to step 5
+                        this.error = 'your passwords do not match';
+
+                    } else if (data == 'AUTHFAIL') {
+
+                        console.log("Password wasn't legit.");
+
+                        //Reset step
+                        this.stepFive = true;
+                        this.stepSix = false;
+
+                        //Pass error message back and move back to step 5
+                        this.error = 'your password was not accepted';
+
                     } else {
                         console.log("Successfully logged user in...");
-                        //window.location.href = data;
+
+                        //Progress step
+                        this.stepFive = false;
+                        this.stepSix = true;
+
+                        //Redirect
+                        window.location.href = data;
                     }
                 } else {
                     console.log("Unexpected error response from login logic.");

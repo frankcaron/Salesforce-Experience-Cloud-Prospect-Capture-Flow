@@ -12,7 +12,9 @@ public with sharing class excProspectRegistrationController {
         String lastName,
         String email,
         String password,
-        String verifyPassword){
+        String verifyPassword,
+        String accountRecord,
+        Boolean loginMode){
 
         //Variables
         String accountId;
@@ -28,6 +30,7 @@ public with sharing class excProspectRegistrationController {
         //Constants
         final String USERFAIL = 'USERFAIL';
         final String PASSFAIL = 'PASSFAIL';
+        final String AUTHFAIL = 'AUTHFAIL';
 
         //Fetch variables from JS
         communityNickname = communityName;
@@ -37,6 +40,7 @@ public with sharing class excProspectRegistrationController {
         userName = email;
         userPassword = password;
         userConfirmPassword = verifyPassword;
+        accountId = accountRecord;
 
         //Logs
         System.debug('excProspectRegistration || Beginning registration and log in logic.');
@@ -44,43 +48,59 @@ public with sharing class excProspectRegistrationController {
         System.debug('excProspectRegistration || First Name: ' + userfirstName);
         System.debug('excProspectRegistration || Last Name: ' + userlastName);
         System.debug('excProspectRegistration || Email: ' + userEmail);
+        System.debug('excProspectRegistration || Account Id: ' + accountId);
+        System.debug('excProspectRegistration || Login Mode: ' + loginMode);
 
-        // it's okay if password is null - we'll send the user a random password in that case
+        //Validate that passwords match and reject if they don't
         if (userPassword != userConfirmPassword) {
             System.debug('excProspectRegistration || Passwords do not match.');
             return PASSFAIL;
         }
 
-        //Necessary variables to prefill
-        User u = new User();
-        u.Username = userName;
-        u.Email = userEmail;
-        u.FirstName = userfirstName;
-        u.LastName = userlastName;
-        u.CommunityNickname = communityNickname;
+        //If not in login mode...
+        if (!loginMode) {
+            try {
+                //Populate variables
+                User u = new User();
+                u.Username = userName;
+                u.Email = userEmail;
+                u.FirstName = userfirstName;
+                u.LastName = userlastName;
+                u.CommunityNickname = userName;
 
-        //Create user
-        System.debug('excProspectRegistration || Creating portal user');
-        //userId = Site.createPortalUser(u, accountId, password);
+                //Create user
+                System.debug('excProspectRegistration || Attempting to create user ' + u.Username);
+
+                //Create User
+                userId = Site.createPortalUser(u, accountId, password);
+
+                //Log
+                System.Debug('excProspectRegistration || User has been created (userId=)' + userId);
+
+            } catch (Exception e) {
+                System.debug('excProspectRegistration || User creation failed');
+                System.debug('excProspectRegistration || ' + e.getMessage());
+                return USERFAIL;
+            }
+        }
 
         //Provide URL back for redirect
-        if (userId != null) {
-            System.Debug('excProspectRegistration || User has been created (userId=)' + userId);
-            if (password != null && password.length() > 1) {
+        if (password != null && password.length() > 1) {
+            System.debug('excProspectRegistration || Logging user ' + userName + ' in...');
 
-                System.debug('excProspectRegistration || Logging user in...');
-                //ApexPages.PageReference pageToReturn = Site.login(userName, password, null);
-                //return pageToReturn.getURL();
+            try {
+                ApexPages.PageReference pageToReturn = Site.login(userName, userPassword, null);
+                return pageToReturn.getURL();
+            } catch (Exception e) {
+                System.debug('excProspectRegistration || User login failed');
+                System.debug('excProspectRegistration || ' + e.getMessage());
+                return AUTHFAIL;
+            }
 
-                return '';
-            }
-            else {
-                System.debug('excProspectRegistration || Password is invalid.');
-                return null;
-            }
-        } else {
-            System.debug('excProspectRegistration || User has not been created successfully.');
-            return USERFAIL;
+        }
+        else {
+            System.debug('excProspectRegistration || Password is invalid.');
+            return PASSFAIL;
         }
     }
 }
