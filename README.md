@@ -29,6 +29,11 @@ You'll also need to do the following:
 1. Make sure your CSP Trusted Settings allow for `https://fc-sfdc-public-assets.s3.us-east-2.amazonaws.com/`.
 2. Make sure your Community's guest user is permissioned for the Apex Class `excProspectRegistrationController`.
 
+# To Do
+
+1. Wire up the config for NBA to an actual strategy and pull data from the NBA APIs vs. just hard-coding it with the component config
+2. Make the colors and styles configurable via the component config instead of via CSS
+
 # Etc.
 
 Created with love by Frank Caron.
