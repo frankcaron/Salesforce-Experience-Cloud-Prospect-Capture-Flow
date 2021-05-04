@@ -2,6 +2,10 @@
 /*          Block Elements          */
 /* ================================ */
 
+body {
+  --demo-brand-color: rgb(199, 171, 117);
+}
+
 .excProspectContainer {
   width: 100%;
   min-width: 100%;
@@ -34,7 +38,7 @@
 }
 
 .excProspectCTA {
-  border: 1px solid #ff0000;
+  border: 1px solid var(--demo-brand-color);
   padding: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -42,7 +46,7 @@
 }
 
 .excProspectCTA:hover {
-  background-color: #ff0000;
+  background-color: var(--demo-brand-color);
   color: #fff;
   cursor: pointer;
 }
@@ -86,7 +90,7 @@
 }
 
 .excProspectFormButton:hover {
-  color: #ff0000;
+  color: #658a20;
   cursor: pointer;
 }
 
@@ -103,7 +107,7 @@
   padding: 60px;
   margin: 20px;
   text-align: center;
-  border: 1px solid #ff0000;
+  border: 1px solid var(--demo-brand-color);
   font-size: 12pt;
   font-weight: bold;
 }
@@ -112,7 +116,7 @@
   padding: 60px;
   margin: 20px;
   text-align: center;
-  background-color: #ff0000;
+  background-color: var(--demo-brand-color);
   color: #fff;
   cursor: pointer;
 }
@@ -125,7 +129,7 @@
 }
 
 .excError {
-  color: #FF0000;
+  color: #658a20;
 }
 
 /* ================================ */
